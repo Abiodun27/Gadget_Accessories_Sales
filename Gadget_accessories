@@ -1,0 +1,72 @@
+CREATE TABLE gadgets_sales (Order_ID INT, Product VARCHAR(255),	Quantity_Ordered INT, Price_Each NUMERIC, Order_Date TIMESTAMP,
+							Purchase_Address VARCHAR(255)
+						   );	
+--Lets look at the whole data						   
+SELECT * FROM gadgets_sales;
+
+-- Lets take a look at the unique product in the data
+SELECT DISTINCT product 
+FROM gadgets_sales;
+
+-- Lets take a look at the unique date in the data
+SELECT DISTINCT order_date 
+FROM gadgets_sales;
+
+--Lets look at the products with most order
+SELECT product, 
+COUNT(*) AS frequency
+FROM gadgets_sales
+GROUP BY product
+ORDER BY frequency DESC;
+
+--Lets look at the products with highest quantity ordered
+SELECT product, 
+SUM(quantity_ordered) AS total_quantity 
+FROM gadgets_sales
+GROUP BY product
+ORDER BY total_quantity DESC;
+
+-- Lets take a look at the product with most order and total quantity
+SELECT product, 
+SUM(quantity_ordered) AS total_quantity,
+COUNT(*) AS frequency
+FROM gadgets_sales
+GROUP BY product
+ORDER BY total_quantity DESC;
+
+-- Lets look at the price of each product
+SELECT DISTINCT product, 
+price_each
+FROM gadgets_sales
+ORDER BY price_each DESC;
+
+-- Lets see product  order by month
+SELECT product,
+DATE_PART('MONTH', order_date) AS month,
+COUNT(*) AS frequency
+FROM gadgets_sales
+GROUP BY product, month
+ORDER BY frequency DESC, month DESC;
+
+-- Lets see product that are frequently sold together
+SELECT y.product,
+STRING_AGG(CAST(y.order_id AS TEXT), ',')
+FROM (
+		SELECT product, 
+		order_id
+		FROM gadgets_sales
+		WHERE order_id
+		IN (
+			SELECT order_id
+			FROM (
+					SELECT order_id, COUNT(*) AS cn
+					FROM gadgets_sales
+					GROUP BY order_id
+					ORDER BY cn DESC
+				 ) AS x
+			WHERE x.cn = 3
+			) 
+	  ) AS y
+GROUP BY y.product
+ORDER BY string_agg;
+
