@@ -10,16 +10,12 @@ The Mobile Gadget Accessories Sales Store database, was created in Postgresql wi
 so as to have an understanding of some of its features, check for missing values and duplicates. Analysis was then performed on the data by answering certain questions
 using SQL, followed by getting more insight through visualization using Tableau. The following questions are answered during the analysis:
 
-* What is the most sales by productline?
-* Which year is most sales made and how much was made?
-* Why is least sales made in 2005? (they only operate for 5 months)
-* Which of the dealsize made the most sales and how much it made?
-* What was the best month for sales in a specific year and how much was earned that month?
-* In which country is the most sales made and how much was made?
-* In which country is the productline most expensive?
-* What is the status of most the products?
-* Who is our best customer ?(this could be best answered with RFM Analysis)
-* What product are most often sold together?
+* Which product has most order?
+* Which product is with highest quantity ordered?
+* Look at the product with most order and total quantity ordered
+* Consider the price of each product to be able to determine the trend of the frequency of order and quantity
+* See order of products by month to determine which product made most sales in each month
+* Lets see products that are frequently sold together?
 
 # Methods Used
 * data cleaning and manipulation
