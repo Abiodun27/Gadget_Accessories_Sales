@@ -70,3 +70,16 @@ FROM (
 GROUP BY y.product
 ORDER BY string_agg;
 
+For Visualization, Tableau Public is used to answer the question of the analyssi and to obtain more insight, the tableau public url is given below:
+https://public.tableau.com/app/profile/thomas.abiodun.olumide/viz/Gadget/GadgetDashboard
+
+Conclusion
+What can we do with the details of this analysis?
+
+1. We can decide to give discount on products that have high prices, so as to sell more of them.
+2. We can also reduce the price of those high selling products, if bought together with those of high prices.
+3. Products bought together can be offered as one package with discount, to drive sales.
+4. The AAA Bateries(4-Pack) was the most popular product.
+5. While the USB-C Charging Cable and Lightning Cable that are most frequently purchased.
+6. The highest order of the most popular product was made in December of the year.
+
